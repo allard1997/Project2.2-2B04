@@ -13,11 +13,21 @@
 
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
-      ['Year', 'Degrees', ],
-      ['12:00', -1,   ],
-      ['13:00',  1,   ],
-      ['14:00',  2,   ],
-      ['15:00',  2,  ]
+        ['Time', 'Degrees'],
+        ['06:00', -20],
+        ['07:00', -15],
+        ['08:00', -10],
+        ['09:00', -5],
+        ['10:00', -4],
+        ['11:00', -2],
+        ['12:00', -1],
+        ['13:00', 1],
+        ['14:00', 2],
+        ['15:00', 3],
+        ['16:00', 8],
+        ['17:00', 10],
+
+
     ]);
 // we moeten straks de tijd en de temp even veranderen door een variabele
     var options = {
