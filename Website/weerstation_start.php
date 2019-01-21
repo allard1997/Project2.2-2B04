@@ -23,7 +23,8 @@
     var options = {
       title: 'Temperature',
       hAxis: {title: 'Temperature in Degrees',  titleTextStyle: {color: '#333'}},
-      vAxis: {minValue: 0}
+      vAxis: {minValue: 0},
+      backgroundColor: { fill:'#FFFFFF', fillOpacity: .5 }
     };
 
     var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
