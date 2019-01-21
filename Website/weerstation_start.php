@@ -5,6 +5,32 @@
   <head>
 
 <link href="weerstation_style.css" type="text/css" rel="stylesheet">
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Year', 'Degrees', ],
+      ['12:00', -1,   ],
+      ['13:00',  1,   ],
+      ['14:00',  2,   ],
+      ['15:00',  2,  ]
+    ]);
+// we moeten straks de tijd en de temp even veranderen door een variabele
+    var options = {
+      title: 'Temperature',
+      hAxis: {title: 'Temperature in Degrees',  titleTextStyle: {color: '#333'}},
+      vAxis: {minValue: 0}
+    };
+
+    var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+</script>
+
   </head>
   <body>
 
@@ -35,6 +61,8 @@
     </div>
 
     <!--- Tekstjes Mijn Makker  -->
+
+    <div id="chart_div" style="width:400; height:300"></div>
 
     <div class="main">
       <div class="container">
