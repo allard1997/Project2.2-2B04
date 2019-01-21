@@ -55,14 +55,12 @@
     <div class="startpage">
       <div class="container">
         <h1>Weerstation</h1>
-
+    <div id="chart_div" style="width:400; height:300"></div>
         <p>Weerstation</p>
       </div>
     </div>
 
     <!--- Tekstjes Mijn Makker  -->
-
-    <div id="chart_div" style="width:400; height:300"></div>
 
     <div class="main">
       <div class="container">
