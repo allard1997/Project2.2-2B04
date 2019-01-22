@@ -80,15 +80,15 @@ body {
 }
 
 .startpage {
-  background: url(https://i.imgur.com/LpHPPwv.jpg) no-repeat center center;
+  background: url(../media/weather-station.jpg) no-repeat center center;
   background-size: cover;
-  height: 800px;
+  height: 250px;
   text-align: center;
 }
 
 .startpage .container {
   position: relative;
-  top: 200px;
+  top: 50px;
 }
 
 .startpage h1 {
