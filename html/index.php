@@ -18,43 +18,75 @@
 
               <!-- Insert hier script voor het ophalen van data -->
 
+            // Load the right charts and the coherent packages from google
               google.charts.load('current', {'packages':['corechart']});
-              google.charts.setOnLoadCallback(drawChart);
 
-              function drawChart() {
-                  var data = google.visualization.arrayToDataTable([
-                      ['Time', 'Degrees'],
-                      ['05:00', -18],
-                      ['06:00', -20],
-                      ['07:00', -12],
-                      ['08:00', -10],
-                      ['09:00', -5],
-                      ['10:00', -4],
-                      ['11:00', -2],
-                      ['12:00', -1],
-                      ['13:00', 1],
-                      ['14:00', 2],
-                      ['15:00', 3],
-                      ['16:00', 8],
-                      ['17:00', 20],
-                      ['18:00', 6],
-                      ['19:00', 7],
-                      ['20:00', 8],
-                      ['21:00', 9],
-                      ['22:00', 10],
-                      ['23:00', 11],
+              // Draw the chart for the temperature
+              google.charts.setOnLoadCallback(drawTemperatureChart);
+
+              // Draw the chart for the rainfall
+              google.charts.setOnLoadCallback(drawRainfallChart);
+
+              function drawTemperatureChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Time');
+                data.addColumn('number', 'Temperature');
+                data.addRows([
+                  ['06:00', -20],
+                  ['07:00', -15],
+                  ['08:00', -10],
+                  ['09:00', -5],
+                  ['10:00', -4],
+                  ['11:00', -2],
+                  ['12:00', -1],
+                  ['13:00', 1],
+                  ['14:00', 2],
+                  ['15:00', 3],
+                  ['16:00', 8],
+                  ['17:00', 10],
 
 
                   ]);
-                  // we moeten straks de tijd en de temp even veranderen door een variabele
+// we moeten straks de tijd en de temp even veranderen door een variabele
                   var options = {
-                      title: 'Temperature Weather station # 1337',
-                      hAxis: {title: 'Temperature in Celcius',  titleTextStyle: {color: '#333'}},
+                      title: 'Temperature',
+                      hAxis: {title: 'Temperature in degrees',  titleTextStyle: {color: '#333'}},
                       vAxis: {minValue: 0},
                       backgroundColor: { fill:'#FFFFFF', fillOpacity: .5 }
                   };
 
-                  var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+                  var chart = new google.visualization.AreaChart(document.getElementById('Temperature_chart_div'));
+                  chart.draw(data, options);
+              }
+
+              function drawRainfallChart() {
+                var data = new google.visualization.DataTable();
+                data.addColumn('string', 'Time');
+                data.addColumn('number', 'Rainfall');
+                data.addRows([
+                  ['06:00', -20],
+                  ['07:00', -15],
+                  ['08:00', -10],
+                  ['09:00', -5],
+                  ['10:00', -4],
+                  ['11:00', -2],
+                  ['12:00', -1],
+                  ['13:00', 1],
+                  ['14:00', 2],
+                  ['15:00', 3],
+                  ['16:00', 8],
+                  ['17:00', 10],
+
+                  ]);
+// we moeten straks de tijd en de temp even veranderen door een variabele
+                  var options = {
+                      title: 'Rainfall',
+                      hAxis: {title: 'Rainfall in mm',  titleTextStyle: {color: '#333'}},
+                      vAxis: {minValue: 0},
+                      backgroundColor: { fill:'#FFFFFF', fillOpacity: .5 }
+                  };
+
+                  var chart = new google.visualization.AreaChart(document.getElementById('Rainfall_chart_div'));
                   chart.draw(data, options);
               }
           </script>
@@ -67,6 +99,14 @@
 
     <!-- Begin div lijst -->
     <div class="container">
+      <table class="columns">
+          <tr>
+            <tr><div id="Temperature_chart_div" style="border: 1px solid #ccc"></div></tr>
+            <h1>Weerstation</h1>
+            <tr><div id="Rainfall_chart_div" style="border: 1px solid #ccc"></div></tr>
+          </tr>
+        </table>
+
         <ol type="I">
             <li>Ree</li>
             <li>waarom geen</li>
