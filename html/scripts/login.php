@@ -5,21 +5,23 @@
  * Date: 23-1-2019
  * Time: 09:42
  */
+$user = "Admin";
+$pass = "Admin";
+if(isset($_SESSION['username']))	{
+	header("location:../index.php");
+}
+if(isset($_POST['submit']))	{
+	$username = $_POST['username'];
+	$password = $_POST['password'];
+	if($username == $user and $password == $pass)	{
+		session_start();
+		$_SESSION['username'] == $username;
+		header("location:../index.php");
+	}
+else{
+	echo "<script>alert('Invalid login details');</script>";
+	}
+}
 
-session_start();
-if(isset($_SESSION['Username']))
-{
-    header("Location:index.php");
-}
-if(!empty(isset($_POST['Submit']))){
-    $Username = $_POST['Username'];
-    $Password = $_POST['Password'];
-    if ($Username == 'Admin' && $Password == ',x9D#3P-E]w5AetZT7Tu'){
-        $_SESSION['Username'] = $Username;
-        header("Location:index.php");
-        exit;
-    } else {
-        header("Location:frm_login.php");
-    }
-}
+
 ?>
