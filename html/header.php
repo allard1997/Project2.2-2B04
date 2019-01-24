@@ -14,7 +14,7 @@
   <div class="dropdown-content">
     <a href="../pages/frm_login.php">Login</a>
     <a href='../pages/'>Placeholder 1</a>
-    <a href='../pages/'>Placeholder 2</a>
+    <a href='../pages/top5.php'>Top 5's</a>
   </div>
 </div>
 <div class="header">
