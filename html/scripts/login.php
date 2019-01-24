@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: hylbr
- * Date: 23-1-2019
- * Time: 09:42
- */
 $user = "Admin";
 $pass = "Admin";
 if(isset($_SESSION['username']))	{
@@ -22,6 +16,4 @@ else{
 	echo "<script>alert('Invalid login details');</script>";
 	}
 }
-
-
 ?>

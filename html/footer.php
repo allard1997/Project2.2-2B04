@@ -1,5 +1,5 @@
 <div class="footer">
     <div class="container">
-        <p>&copy; ITV2B-04 Website Weerstation Alle Rechten Voorbehouden</p>
+        <p>&copy; 2019 - ITV2B-04 - Weather stations</p>
     </div>
 </div>
