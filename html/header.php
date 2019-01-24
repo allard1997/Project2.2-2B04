@@ -7,17 +7,18 @@
   <link href="../weerstation_style.css" type="text/css" rel="stylesheet">
 </head>
 <!-- include login.php-->
-<?php include'scripts/login.php';?>
+<?php session_start(); ?>
 
 <div class="dropdown" style="float:right;">
   <button class="dropbtn">Menu</button>
   <div class="dropdown-content">
-	<?php if(isset($_SESSION['username']))	{
-		?>
-		<a href="../pages/logout">Logout</a>
-	<?php } else { ?>
-		<a href="../pages/frm_login.php">Login </a>
-	<?php } ?>
+  <?php
+  if(isset($_SESSION['username']))	{
+    echo '<a href="../scripts/logout.php">Logout</a>';
+	} else {
+    echo '<a href="../pages/frm_login.php">Login</a>';
+   }
+   ?>
     <a href='../pages/'>Placeholder 1</a>
     <a href='../pages/top5.php'>Top 5's</a>
   </div>

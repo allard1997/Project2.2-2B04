@@ -1,4 +1,5 @@
 <?php
+session_start();
 $user = "Admin";
 $pass = "Admin";
 if(isset($_SESSION['username']))	{
@@ -8,8 +9,7 @@ if(isset($_POST['submit']))	{
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 	if($username == $user and $password == $pass)	{
-		session_start();
-		$_SESSION['username'] == $username;
+		$_SESSION['username'] = $username;
 		header("location:../index.php");
 	}
 else{
