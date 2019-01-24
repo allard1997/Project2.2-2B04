@@ -12,7 +12,7 @@
     <div class="dropdown" style="float:right;">
       <button class="dropbtn">Menu</button>
       <div class="dropdown-content">
-        <a href="../pages/frm_login.php">Inloggen</a>
+        <a href="pages/frm_login.php">Inloggen</a>
         <a href='Pagina 1'>Pagina 1</a>
         <a href='Pagina 2'>Pagina 2</a>
       </div>
