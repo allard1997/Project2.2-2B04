@@ -8,8 +8,24 @@
     <!--- Tekstjes Mijn Makker  -->
     <div class="main">
     <!-- Begin div -->
-      <div class="container">
-        <table class="columns">
+      <div class="container" style="text-align:center;">
+        <table class="columns" >
+          <button class="button" onclick="displayOrHideGraphTemperature()">Temperature Graph</button>
+          <button class="button" onclick="displayOrHideGraphRainfall()">Rainfall Graph</button>
+          <style>
+            .button {
+              background-color: #4CAF50;
+              border: none;
+              color: white;
+              padding: 15px 32px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              margin: 4px 2px;
+              cursor: pointer;
+              }
+          </style>
           <tr>
             <?php include "scripts/charts.php"; ?>
             <h2>Weather station - Example graph: Temperature</h2>

@@ -83,6 +83,24 @@
                   var chart = new google.visualization.AreaChart(document.getElementById('Rainfall_chart_div'));
                   chart.draw(data, options);
               }
+
+              function displayOrHideGraphTemperature() {
+                var x = document.getElementById("Temperature_chart_div");
+                if (x.style.display === "none") {
+                  x.style.display = "block";
+                } else {
+                  x.style.display = "none";
+                }
+              }
+
+              function displayOrHideGraphRainfall() {
+                var y = document.getElementById("Rainfall_chart_div");
+                if (y.style.display === "none") {
+                  y.style.display = "block";
+                } else {
+                  y.style.display = "none";
+                }
+              }
     </script>
 </body>
 </html>
