@@ -12,7 +12,12 @@
 <div class="dropdown" style="float:right;">
   <button class="dropbtn">Menu</button>
   <div class="dropdown-content">
-    <a href="../pages/frm_login.php">Login</a>
+	<?php if(isset($_SESSION['username']))	{
+		?>
+		<a href="../pages/logout">Logout</a>
+	<?php } else { ?>
+		<a href="../pages/frm_login.php">Login </a>
+	<?php } ?>
     <a href='../pages/'>Placeholder 1</a>
     <a href='../pages/'>Placeholder 2</a>
   </div>
