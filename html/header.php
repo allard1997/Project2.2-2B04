@@ -12,7 +12,7 @@
 <button class="dropbtn"> 
   <?php 
   if(isset($_SESSION['username'])){ 
-  echo "logged in as: ".$_SESSION['username'];
+  echo "Logged in as: ".$_SESSION['username'];
   }
   ?>
   </button>
@@ -34,13 +34,13 @@
 </div>
 <div class="header">
   <div class="container">
-    <p ALIGN="center">
-        <a href="../index.php">ITV2B-04 - Weather stations</a>
-    </p>
+
   </div>
 </div>
 <div class="startpage">
   <div class="container">
-    <h1>Weather stations</h1>
+      <P>
+      <h1> <a href="../index.php">Weather Stations</a></h1>
+      </P>
   </div>
 </div>
