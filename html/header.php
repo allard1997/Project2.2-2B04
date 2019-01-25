@@ -8,8 +8,9 @@
 
 
 <!-- include login.php-->
+    <div class="header">
 
-<div class="active" style="float:left;">
+        <div class="active" style="float:left;">
 <button class="dropbtn"> 
   <?php 
   if(isset($_SESSION['username'])){ 
@@ -17,7 +18,7 @@
   }
   ?>
   </button>
-</div>
+        </div>
 
 <div class="dropdown" style="float:right;">
   <button class="dropbtn">Menu</button>
@@ -33,9 +34,9 @@
     <a href='../pages/top5.php'>Top 5's</a>
   </div>
 </div>
-<div class="header">
+
   <div class="container">
-    <p ALIGN="center"></pALIGN>
+    <p ALIGN="center"></p>
   </div>
 </div>
 <div class="startpage">
