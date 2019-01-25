@@ -6,7 +6,6 @@
 <html>
 
 <!-- Include header -->
-
 <?php include "header.php"; ?>
 
   <body>
