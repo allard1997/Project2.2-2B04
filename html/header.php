@@ -8,7 +8,15 @@
 </head>
 <!-- include login.php-->
 
-
+<div class="active" style="float:left;">
+<button class="dropbtn"> 
+  <?php 
+  if(isset($_SESSION['username'])){ 
+  echo "logged in as: ".$_SESSION['username'];
+  }
+  ?>
+  </button>
+</div>
 
 <div class="dropdown" style="float:right;">
   <button class="dropbtn">Menu</button>
