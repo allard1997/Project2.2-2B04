@@ -5,7 +5,8 @@
   <meta http-equiv="Content-Language" content="en">
   <meta name="language" content="en">
   <link href="../weerstation_style.css" type="text/css" rel="stylesheet">
-</head>
+
+
 <!-- include login.php-->
 
 <div class="active" style="float:left;">
@@ -34,13 +35,15 @@
 </div>
 <div class="header">
   <div class="container">
-
+    <p ALIGN="center"></pALIGN>
   </div>
 </div>
 <div class="startpage">
   <div class="container">
-      <P>
+      <p>
       <h1> <a href="../index.php">Weather Stations</a></h1>
-      </P>
+      </p>
   </div>
 </div>
+
+</head>
