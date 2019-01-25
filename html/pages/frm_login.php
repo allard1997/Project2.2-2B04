@@ -1,4 +1,5 @@
 <html>
+<?php session_start();?>
 <?php include '../header.php'; ?>
 <body>
 <div align="center"><form id="frm_login"></form>

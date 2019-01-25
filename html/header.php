@@ -7,7 +7,8 @@
   <link href="../weerstation_style.css" type="text/css" rel="stylesheet">
 </head>
 <!-- include login.php-->
-<?php session_start(); ?>
+
+
 
 <div class="dropdown" style="float:right;">
   <button class="dropbtn">Menu</button>

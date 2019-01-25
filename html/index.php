@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php session_start();?>
+<?php if(!isset($_SESSION['username']))	{
+	header("location:../pages/frm_login.php");
+}?>
 <html>
 
 <!-- Include header -->
