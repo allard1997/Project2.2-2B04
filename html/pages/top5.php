@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php session_start();?>
+<?php if(!isset($_SESSION['username']))	{
+	header("location:../pages/frm_login.php");
+}?>
 <html lang="en">
 <head>
     <title>Top 5's - Weather stations</title>
