@@ -13,7 +13,10 @@ if(isset($_POST['submit']))	{
 		header("location:../index.php");
 	}
 else{
-	echo "<script>alert('Invalid login details');</script>";
+	echo "<script>alert('Invalid login details')</script>";
+	?>
+	<a href="../pages/frm_login.php">Click here to try again</a>
+	<?php
 	}
 }
 ?>
