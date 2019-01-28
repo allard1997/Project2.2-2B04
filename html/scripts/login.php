@@ -1,7 +1,7 @@
 <?php
 session_start();
 $user = "Admin";
-$pass = "Admin";
+$pass = "Paashaas";
 if(isset($_SESSION['username']))	{
 	header("location:../index.php");
 }
