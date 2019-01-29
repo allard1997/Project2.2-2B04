@@ -24,18 +24,18 @@
 			  
 			}
 			
-			$csvData = readCSV("../data/2019-01-24_21.csv");
+			$csvData = readCSV("../../data/2019-01-24_21.csv");
 			
 			$date = date('Y-m-d');
 			
-			if (!file_exists("../data/".$date)) {
-				mkdir("../data/".$date, 0777, true);
+			if (!file_exists("../../data/".$date)) {
+				mkdir("../../data/".$date, 0777, true);
 			}
 			
 			foreach ($csvData as $csvData) {
 				echo $csvData[0], ',';
 				if (!file_exists($csvData[0])) {
-			fopen("../data/".$date."/".$csvData[0].".csv", "w");
+			fopen("../../data/".$date."/".$csvData[0].".csv", "w");
 			}
 			}
 			
