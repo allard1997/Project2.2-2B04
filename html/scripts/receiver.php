@@ -34,8 +34,8 @@
 			foreach ($csvData as $csvData) {
 				echo $csvData[0], ',';
 				if (!file_exists($csvData[0])) {
-					fopen("../../data/".$date."/".$csvData[0].".csv", "w");	{
-						$file1 = fopen("../../data/".$date."/".$csvData[0].".csv", "w");
+					fopen("../../data/".$date."/".$csvData[0].".csv", "a");	{
+						$file1 = fopen("../../data/".$date."/".$csvData[0].".csv", "a");
 						fputcsv($file1, $csvData);
 					}
 				}
