@@ -23,9 +23,8 @@
 			
 			  
 			}
-			
+			$arr = array('hoi', 'hallo');
 			$csvData = readCSV("../../data/2019-01-24_21.csv");
-			
 			$date = date('Y-m-d');
 			
 			if (!file_exists("../../data/".$date)) {
@@ -35,19 +34,13 @@
 			foreach ($csvData as $csvData) {
 				echo $csvData[0], ',';
 				if (!file_exists($csvData[0])) {
-			fopen("../../data/".$date."/".$csvData[0].".csv", "w");
+					fopen("../../data/".$date."/".$csvData[0].".csv", "w");	{
+						$file1 = fopen("../../data/".$date."/".$csvData[0].".csv", "w");
+						fputcsv($file1, $csvData);
+					}
+				}
 			}
-			}
-			
-			
-			/*$file = fopen("../data/Book1.csv","w");
-			
-			foreach ($csvData as $row) {
-				fputcsv($file, $row);
-			}
-		
-			fclose($file);*/
-			
+						    			
 ?>
         
         </div>
