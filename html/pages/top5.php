@@ -7,7 +7,9 @@
 <head>
     <title>Top 5's - Weather stations</title>
 </head>
-<?php include "../header.php"; ?>
+<?php include "../header.php"; 
+	  include "../scripts/functions.php";
+?>
 <body>
     <div class=main>
         <div class=container>
@@ -58,27 +60,6 @@
         </form>
 
         <?php
-        function readCSV($file)
-        {
-            $row = 0;
-            $csvArray = array();
-            if( ( $handle = fopen($file, "r") ) !== FALSE ) {
-                while( ( $data = fgetcsv($handle, 1000, ",") ) !== FALSE ) {
-                $num = count($data);
-                for( $c = 0; $c < $num; $c++ ) {
-                    $csvArray[$row][] = $data[$c];
-                }
-                $row++;
-                }
-            }
-            if( !empty( $csvArray ) ) {
-                return array_splice($csvArray, 1);
-                fclose($handle);
-            } else {
-                return false;
-                fclose($handle);
-            }
-        }
             if (isset($SetDate)) {
                 $csvData = readCSV("../../data/$SetDate/2019-01-24_21.csv");
             } else {
