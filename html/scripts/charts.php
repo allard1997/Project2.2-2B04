@@ -10,18 +10,11 @@
 
     <!-- Load the charts from google -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <!-- Load the jQuery CDN  -->
-<!--
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Load the jQuery CSV library
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
-        integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
-        crossorigin="anonymous"></script>
-    <script src="src/jquery.csv.js"></script>
--->
 
-
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<!-- Load the jQuery CDN  -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+    crossorigin="anonymous"></script>
 <script src="http://prithwis.x10.bz/charts/jquery.csv-0.71.js"></script>
 <!--   <script src="https://jquery-csv.googlecode.com/files/jquery.csv-0.71.js"></script>-->
 <script type='text/javascript'>
@@ -48,7 +41,7 @@
 
                   // this view can select a subset of the data at a time
                   var view = new google.visualization.DataView(data);
-                  view.setColumns([2,3]);
+                  view.setColumns([2, 3]);
 
                   // set chart options
                   var options = {
@@ -61,72 +54,39 @@
 
                   // create the chart object and draw it
                   var chart = new google.visualization.AreaChart(document.getElementById('Temperature_chart_div'));
-                  chart.draw(view, options);
+                  chart.draw(view.toDataTable(), options);
                 });
               }
-/*
-              function drawTemperatureChart() {
-                var data = new google.visualization.DataTable();
-                data.addColumn('string', 'Time');
-                data.addColumn('number', 'Temperature');
-                data.addRows([
-                  ['06:00', -1],
-                  ['07:00', -1],
-                  ['08:00', -1],
-                  ['09:00', -1],
-                  ['10:00', -1],
-                  ['11:00', -0.5],
-                  ['12:00', 0.5],
-                  ['13:00', 1],
-                  ['14:00', 1],
-                  ['15:00', 2],
-                  ['16:00', 2],
-                  ['17:00', 2],
 
 
-                  ]);
-            // we moeten straks de tijd en de temp even veranderen door een variabele
-                  var options = {
-                      title: 'Temperature',
-                      hAxis: {title: 'Temperature in degrees',  titleTextStyle: {color: '#333'}},
-                      vAxis: {minValue: 0},
-                      backgroundColor: { fill:'#FFFFFF', fillOpacity: .5 }
-                  };
-
-                  var chart = new google.visualization.AreaChart(document.getElementById('Temperature_chart_div'));
-                  chart.draw(data, options);
-              }
-*/
               function drawRainfallChart() {
-                var data = new google.visualization.DataTable();
-                data.addColumn('string', 'Time');
-                data.addColumn('number', 'Rainfall');
-                data.addRows([
-                  ['06:00', 0],
-                  ['07:00', 1],
-                  ['08:00', 1.5],
-                  ['09:00', 1],
-                  ['10:00', 0],
-                  ['11:00', 0],
-                  ['12:00', 0],
-                  ['13:00', 1],
-                  ['14:00', 0.5],
-                  ['15:00', 0],
-                  ['16:00', 0],
-                  ['17:00', 0],
+              	// grab the CSV
+              	$.get('testingthis.csv', function(csvString) {
+              		// transform the CSV string into a 2-dimensional array
+              		var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
 
-                  ]);
-            // we moeten straks de tijd en de temp even veranderen door een variabele
-                  var options = {
-                      title: 'Rainfall',
-                      hAxis: {title: 'Rainfall in mm',  titleTextStyle: {color: '#333'}},
-                      vAxis: {minValue: 0},
-                      backgroundColor: { fill:'#FFFFFF', fillOpacity: .5 }
-                  };
+              		// this new DataTable object holds all the data
+              		var data = new google.visualization.arrayToDataTable(arrayData);
 
-                  var chart = new google.visualization.AreaChart(document.getElementById('Rainfall_chart_div'));
-                  chart.draw(data, options);
+              		// this view can select a subset of the data at a time
+              		var view = new google.visualization.DataView(data);
+              		view.setColumns([2, 3]);
+
+              		// set chart options
+              		var options = {
+              			title: "Rainfall",
+              			hAxis: {title: data.getColumnLabel(2), minValue: data.getColumnRange(2).min, maxValue: data.getColumnRange(2).max},
+              			vAxis: {title: data.getColumnLabel(3), minValue: data.getColumnRange(3).min, maxValue: data.getColumnRange(3).max},
+              			backgroundColor: { fill:'#FFFFFF', fillOpacity: .5 },
+              			legend: 'none'
+              		};
+
+              		// create the chart object and draw it
+              		var chart = new google.visualization.AreaChart(document.getElementById('Rainfall_chart_div'));
+              		chart.draw(view.toDataTable(), options);
+              	});
               }
+
 
               function displayOrHideGraphTemperature() {
                 var x = document.getElementById("Temperature_chart_div");
@@ -145,14 +105,7 @@
                   y.style.display = "none";
                 }
               }
-/*
-              //Simpele test van mij om te kijken of de jQuery wel werkt
-              $(function(){
-                 alert("My First Jquery Test");
-              });
 
-              window.alert("sometext");
-              */
     </script>
 </body>
 </html>
