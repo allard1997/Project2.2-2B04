@@ -13,24 +13,7 @@
 <body>
     <div class=main>
         <div class=container>
-        <h2>Top 5 list - W.I.P.</h2>
-        <?php
-            // $row = 1;
-            // if (($handle = fopen("../../data/2019-01-24_21.csv", "r")) !== FALSE) {
-            //     echo '<table border="1"><tbody>';
-            //     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-            //         if ($row == 1) {
-            //             echo '<thead><tr><th>'.$data[0].': Station nr</th><th>'.$data[1].': Date</th><th>'.$data[2].': Tijd</th><th>'.$data[3].': Temp</th><th>'.$data[7].': Cloud cover</th><th>'.$data[9].': Rainfall</th></tr></thead>';
-            //             $row++;
-            //         }else{
-            //             echo '<tr><td>'.$data[0].'</td><td>'.$data[1].'</td><td>'.$data[2].'</td><td>'.$data[3].'</td><td>'.$data[7].'</td><td>'.$data[9].'</td></tr>';
-            //         }
-            //     }
-            //     echo '</tbody></table>';
-            //     fclose($handle);
-            // }
-        ?>
-
+        <h2>Top 5 - Inefficient places - W.I.P.</h2>
         <?php
             $SetDate = $_POST["SetDate"];
             $dir = '../../data';
@@ -38,7 +21,7 @@
             rsort($scan_dir);
         ?>
         <form action="top5.php" method="post">
-        Selecteer een datum:
+        Select a date:
         <select name="SetDate">
         <?php
             $x=0;
@@ -58,27 +41,37 @@
         <input style="margin:5px" type="submit" value="Select">
         </select>
         </form>
-
         <?php
-            if (isset($SetDate)) {
-                $csvData = readCSV("../../data/$SetDate/2019-01-24_21.csv");
-            } else {
-                $csvData = readCSV("../../data/$scan_dir[0]/2019-01-24_21.csv");
+            $csvData = array();
+            $c = 0;
+            foreach ($scan_dir as $scan_file) {
+                $scan_file = array_diff(scandir("$dir/$scan_dir[$c]"), array('..', '.'));
+                $files = $scan_file;
+                echo "<div>";
+                foreach($files as $file) {
+                    if (isset($SetDate)) {
+                        array_push($csvData, readCSV("../../data/$SetDate/$file"));
+                    } else {
+                        array_push($csvData, readCSV("../../data/$scan_dir[$c]/$file"));
+                    }
+                }
+                
+                $c++;
+                echo "</div>";
             }
             
             foreach ($csvData as $key => $row) {
-                $temp[$key]  = $row[3];
-                $visib[$key] = $row[7];
-                $prcp[$key] = $row[9];
+                $temp[$key]  = $row[0][3];
+                $prcp[$key] = $row[0][9];
             }
 
-            array_multisort($temp, SORT_DESC, $visib, SORT_ASC, $prcp, SORT_ASC, $csvData);
+            array_multisort($temp, SORT_DESC, $prcp, SORT_DESC, $csvData);
 
             $count=0;
-            echo "<table border='1'><thead><tr><th>Station nr</th><th>Date</th><th>Time</th><th>Temp</th><th>Cloud Cover</th><th>Rainfall</th></tr></thead>";
+            echo "<table border='1'><thead><tr><th>Station nr</th><th>City</th><th>Temp</th><th>Rainfall</th></tr></thead>";
             foreach ($csvData as $csvData) {
                 if ($count < 5) {
-                    echo "<tr><td>".$csvData[0]."</td><td>".$csvData[1]."</td><td>".$csvData[2]."</td><td>".$csvData[3]."</td><td>".$csvData[7]."</td><td>".$csvData[9]."</td></tr>";
+                    echo "<tr><td>".$csvData[0][0]."</td><td>Placeholder</td><td>".$csvData[0][3]."</td><td>".$csvData[0][9]."</td></tr>";
                 $count++;
                 } else {
                     echo "</tbody></table>";

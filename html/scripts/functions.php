@@ -14,7 +14,9 @@ function readCSV($file)
                 }
             }
             if( !empty( $csvArray ) ) {
+
                 return $csvArray;
+                return array_splice($csvArray, 0);
                 fclose($handle);
             } else {
                 return false;
@@ -25,9 +27,9 @@ function readCSV($file)
 //Functie writeCSV: schrijft het ingelezen bestand in subbestandjes
 function writeCSV($file)
 		{
-			$date = date('Y-m-d');
+			$date = date('d-m-Y');
             if (!file_exists("../../data/" . $date)) {
-                    mkdir("../../data/" . $date, 0777, true);
+                    mkdir("../../data/" . $date);
                 }
                 foreach ($file as $csvSplitContents) {
                     print_r($csvSplitContents);

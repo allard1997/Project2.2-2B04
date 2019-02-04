@@ -25,7 +25,7 @@ include ("../scripts/functions.php");
 
     <script>
 
-        
+
 
         /* var stationsmap = L.map('map').setView([0,0],3);
 
