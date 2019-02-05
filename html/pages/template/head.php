@@ -1,3 +1,7 @@
+<?php
+    include_once '../../src/helper.php';
+?>
+
 <html>
 
 <head>
