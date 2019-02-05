@@ -32,6 +32,21 @@ if (!function_exists('stations')) {
     }
 }
 
+if (!function_exists('station')) {
+    function station(int $id) {
+        $path = DataHandler::STATION_INFO_FOLDER . '/' . $id . '.json';
+
+        if (!file_exists($path)) {
+            return null;
+        }
+
+        $file = fopen($path, 'r');
+        $data = json_decode(fread($file, filesize($path)), true);
+
+        return new Station($data);
+    }
+}
+
 if (!function_exists('station_data')) {
     function station_data($date, $stationId, $from = null, $to = null)
     {
