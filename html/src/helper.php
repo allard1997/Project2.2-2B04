@@ -36,6 +36,11 @@ if (!function_exists('station_data')) {
     function station_data($date, $stationId, $from = null, $to = null)
     {
         $path = DataHandler::STATION_DATA_FOLDER . $date . '/' . $stationId . '.json';
+
+        if (!file_exists($path)) {
+            return null;
+        }
+
         $file = fopen($path, 'r');
         $data = json_decode(fread($file, filesize($path)), true);
 
@@ -57,7 +62,13 @@ if (!function_exists('today')) {
     function today(int $days = 0)
     {
         $date = date_create(date('d-m-Y'));
-        date_sub($date, date_interval_create_from_date_string(($days < 0 ? '-' : '') . $days . " days"));
+
+        if ($days >= 0) {
+            date_add($date, date_interval_create_from_date_string($days . " days"));
+        } else {
+            date_sub($date, date_interval_create_from_date_string("-" . $days . " days"));
+        }
+
         return date_format($date, 'd-m-Y');
     }
 }
