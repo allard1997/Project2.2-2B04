@@ -27,9 +27,9 @@ class Station
      * @param null $to
      * @return array
      */
-    public function data($from = null, $to = null): array
+    public function data($date, $from = null, $to = null): array
     {
-        return station_data(today(), $this->id, $from, $to);
+        return station_data($date, $this->id, $from, $to);
     }
 
     /**
