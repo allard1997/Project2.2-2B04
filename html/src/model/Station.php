@@ -6,18 +6,20 @@
  * Time: 10:44 PM
  */
 
-include_once '../helper.php';
+include_once 'src/helper.php';
 
 class Station
 {
 
     private $id;
     private $country;
+    private $latitude;
 
     public function __construct($data)
     {
-        $this->id      = $data['id'];
-        $this->country = $data['country'];
+        $this->id       = $data['id'];
+        $this->country  = $data['country'];
+        $this->latitude = $data['latitude'];
     }
 
     /**
@@ -27,7 +29,7 @@ class Station
      * @param null $to
      * @return array
      */
-    public function data($date, $from = null, $to = null): array
+    public function data($date, $from = null, $to = null)
     {
         return station_data($date, $this->id, $from, $to);
     }
