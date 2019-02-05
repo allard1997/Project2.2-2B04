@@ -14,6 +14,8 @@ function readCSV($file)
                 }
             }
             if( !empty( $csvArray ) ) {
+
+                return $csvArray;
                 return array_splice($csvArray, 0);
                 fclose($handle);
             } else {
