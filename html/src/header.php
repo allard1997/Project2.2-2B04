@@ -33,6 +33,6 @@
     <a href="../../src/pages/form_login.php" class="btn btn-outline-dark my-2 my-sm-0">Login</a>
   </div>
 </nav>
-      <? }; ?>
+      <?php }; ?>
   </div>
 </nav>
