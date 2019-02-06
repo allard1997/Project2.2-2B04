@@ -3,11 +3,11 @@
     <img src="https://material.io/tools/icons/static/icons/baseline-wb_sunny-24px.svg" width="30" height="30" class="d-inline-block align-top" alt="">
     Weather information
   </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse">
+  <div class="collapse navbar-collapse" id="navbarContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" href="index.php">Home</a>
