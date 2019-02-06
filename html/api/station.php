@@ -1,7 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: jesse-gall
- * Date: 2/6/19
- * Time: 2:51 PM
- */
+
+include_once '../src/helper.php';
+
+$station = station(11160);
+$data['station'] = $station;
+$data['data'] = $station->data(today(-1));
+
+header('Content-Type: application/json');
+
+echo json_encode($data);
