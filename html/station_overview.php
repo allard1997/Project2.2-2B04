@@ -1,4 +1,4 @@
-<?php include_once '../src/helper.php' ?>
+<?php include_once 'src/helper.php' ?>
 
 <?php
 if (isset($_GET['countries'])) {
@@ -74,7 +74,7 @@ if (isset($_GET['countries'])) {
                         <td><?php echo $station->getCountry() ?></td>
                         <td>
                             <button type="button" class="btn btn-primary"
-                                    onclick="window.location='/pages/station_view.php?station_id=<?php echo $station->getID()?>'">
+                                    onclick="window.location='station_view.php?station_id=<?php echo $station->getID()?>'">
                                 Select
                             </button>
                         </td>
