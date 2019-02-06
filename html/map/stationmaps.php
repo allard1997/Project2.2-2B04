@@ -39,7 +39,7 @@
         stations.forEach(station => {
             markers.addLayer(
                 L.marker([station.latitude, station.longitude])
-                    .bindPopup( `<h4>${station.name}</h4> <br> <a href="/station_view.php/?station_id=${station.id}">view</a>` )
+                    .bindPopup( `<h4>${station.name}</h4> <br> <a href="/station_view.php?station_id=${station.id}">view</a>` )
             )
         });
 
