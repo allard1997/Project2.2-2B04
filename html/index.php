@@ -4,6 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="icon" href="favicon.ico" sizes="16x16" type="image/icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -41,7 +42,7 @@ include('src/header.php');
                 <div class="col-md-4">
                     <h2>Map</h2>
                     <p>A map with toggable markers.</p>
-                    <a class="btn btn-secondary" href="pages/stationmaps.php" role="button">View map &raquo;</a></p>
+                    <a class="btn btn-secondary" href="old_/pages/stationmaps.php" role="button">View map &raquo;</a></p>
                 </div>
                 <div class="col-md-4">
                     <h2>Charts</h2>

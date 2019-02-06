@@ -28,7 +28,7 @@
     echo '<a href="..frm_login.php">Login</a>';
    }
    ?>
-    <a href='..'>Placeholder 1</a>
+    <a href='../..'>Placeholder 1</a>
     <a href='..top5.php'>Top 5's</a>
   </div>
 </div>
@@ -38,6 +38,6 @@
 </div>
 <div class="startpage">
   <div class="container">
-    <h1><a style=color:#66cd00;line-height:100px;font-size:80px;margin-top:0;margin-bottom:0px;text-transform:uppercase;text-shadow:2px2px#006400; href="../index.php">Weather Stations</a></h1>
+    <h1><a style=color:#66cd00;line-height:100px;font-size:80px;margin-top:0;margin-bottom:0px;text-transform:uppercase;text-shadow:2px2px#006400; href="../../index.php">Weather Stations</a></h1>
   </div>
 </div>
