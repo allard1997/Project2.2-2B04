@@ -19,10 +19,13 @@
 </head>
 <body>
 <?php include 'src/header.php'; ?>
+<div class="jumbotron">
 <div class="container">
     <h1>Top 5 for inefficient solar panel locations</h1>
     <h4>Sri Lanka and India</h4>
-    <br>
+</div>
+</div>
+<div class="container">
     <div class="dropdown">
         <form action="solar_top5.php" method="post">
             Select a date:

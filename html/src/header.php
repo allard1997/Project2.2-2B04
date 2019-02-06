@@ -25,4 +25,3 @@
     <a href="login.php" class="btn btn-outline-dark my-2 my-sm-0">Login</a>
   </div>
 </nav>
-</br>
