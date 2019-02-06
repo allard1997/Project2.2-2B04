@@ -14,7 +14,7 @@
       <li class="nav-item">
         <a class="nav-link" href="../../index.php">Home</a>
       </li>
-        <?php if(isset($_SESSION['username']))	{ ?>
+        <?//php if(isset($_SESSION['username'])){ ?>
       <li class="nav-item">
         <a class="nav-link" href="station_overview.php">Search station</a>
       </li>
@@ -26,8 +26,8 @@
       </li>
     </ul>
       <a href="src/scripts/logout.php" class="btn btn-outline-dark my-2 my-sm-0">Logout</a>
-      <? }else{?>
+      <? //}else{?>
     <a href="src/pages/form_login.php" class="btn btn-outline-dark my-2 my-sm-0">Login</a>
-      <? } ;?>
+      <? //}; ?>
   </div>
 </nav>
