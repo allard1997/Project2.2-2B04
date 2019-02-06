@@ -20,10 +20,10 @@
 <body>
 <?php include 'src/header.php'; ?>
 <div class="jumbotron">
-<div class="container">
-    <h1 class="display-4">Top 5 for inefficient solar panel locations</h1>
-    <p class="lead">Sri Lanka and India</p>
-</div>
+    <div class="container">
+        <h1 class="display-4">Top 5 for inefficient solar panel locations</h1>
+        <p class="lead">Sri Lanka and India</p>
+    </div>
 </div>
 <div class="container">
     <div class="dropdown">

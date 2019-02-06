@@ -16,53 +16,49 @@ session_start();
 <?php
 include('src/header.php');
 ?>
-
-
-
-    <body>
+<body>
     <main role="main">
-
-        <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron">
             <div class="container">
-                <h1 class="display-3">Weather Information</h1>
-                <p>Webinterface for the Weather Information project for Aitken Spence.</p>
-
+                <h1 class="display-3">Weather information</h1>
+                <p>Web interface for the weather information for Aitken Spence.</p>
                 <?php if(isset($_SESSION['username']))	{ ?>
                     <p><a class="btn btn-danger btn-lg" href="src/scripts/logout.php" role="button">Logout &raquo;</a></p>
-
-
             </div>
         </div>
-
         <div class="container">
-            <!-- Example row of columns -->
             <div class="row">
                 <div class="col-md-4">
                     <h2>Map</h2>
-                    <p>A map with toggable markers.</p>
-                    <a class="btn btn-secondary" href="pages/stationmaps.php" role="button">View map &raquo;</a></p>
+                    <p>A map with toggleable markers.</p>
+                    <a class="btn btn-secondary" href="pages/stationmaps.php" role="button">View map &raquo;</a>
                 </div>
                 <div class="col-md-4">
-                    <h2>Charts</h2>
-                    <p>Various charts with data</p>
-                    <a class="btn btn-secondary" href="charts.php" role="button">View charts &raquo;</a></p>
+                    <h2>Weather stations</h2>
+                    <p>Overview of all the weather stations by country.</p>
+                    <p>Open a weather station for live information and more.</p>
+                    <a class="btn btn-secondary" href="station_overview.php" role="button">View stations &raquo;</a>
                 </div>
                 <div class="col-md-4">
-                    <h2>Top 5</h2>
-                    <p>Shows the top 5 as specified by Aitken Space</p>
-                    <a class="btn btn-secondary" href="solar_top5.php" role="button">View top 5 &raquo;</a></p>
+                    <h2>Top 5's</h2>
+                    <p>Shows one of the top 5's as specified by Aitken Spence.</p>
+                    <div class="dropdown">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        View top 5's</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="solar_top5.php">Inefficient solar locations</a>
+                        <a class="dropdown-item" href="top5_resort.php">Potential resort locations</a>
+                    </div>
+                    </div>
                 </div>
             </div>
-
-        </div> <!-- /container -->
+        </div>
     </main>
     </body>
-
-    <?php } else{ //als niet logged in: laat login zien ?>
-    <p><a class="btn btn-primary btn-lg" href="src/form_login.php" role="button">Login &raquo;</a></p>
-    </main>
-    <?php }; ?>
+<?php } else { //als niet logged in: laat login zien ?>
+<p><a class="btn btn-primary btn-lg" href="src/form_login.php" role="button">Login &raquo;</a></p>
+</main>
+<?php }; ?>
 <?php include('src/footer.php'); ?>
 </body>
 </html>
