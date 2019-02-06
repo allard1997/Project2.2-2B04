@@ -24,7 +24,7 @@
           Top 5's
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="solar_top5.php">Inefficient solar locations</a>
+          <a class="dropdown-item" href="/solar_top5.php">Inefficient solar locations</a>
           <a class="dropdown-item" href="top5_resort.php">Potential resort locations</a>
         </div>
       </li>
