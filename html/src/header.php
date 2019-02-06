@@ -28,7 +28,7 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Potential location map</a>
+        <a class="nav-link disabled" href="map/stationmap.php">Potential location map</a>
       </li>
     </ul>
       <a class="nav-link disabled" href="#">Hello <?php echo $_SESSION['username'];?>!</a>
