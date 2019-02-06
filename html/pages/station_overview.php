@@ -2,12 +2,14 @@
 
 <?php
 if (isset($_GET['countries'])) {
-    $countries = explode(',', $_GET['countries']);
-    $countries = array_map('strtoupper', $countries);
-    $countries = array_map('trim', $countries);
-    $stations = stations($countries);
+    $countries = $_GET['countries'];
+    $arr = explode(',', $countries);
+    $arr = array_map('strtoupper', $arr);
+    $arr = array_map('trim', $arr);
+    $stations = stations($arr);
 } else {
-    $station = stations();
+    $countries = '';
+    $stations = stations();
 }
 ?>
 
@@ -46,7 +48,7 @@ if (isset($_GET['countries'])) {
                         Country
                     </span>
                 </div>
-                <input id="countries" type="text" value="<?php echo $_GET['countries']?>" class="form-control" placeholder="e.g: india,netherlands,sri lanka">
+                <input id="countries" type="text" value="<?php echo $countries ?>" class="form-control" placeholder="e.g: india,netherlands,sri lanka">
             </div>
         </div>
         <div class="col-6">

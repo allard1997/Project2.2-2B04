@@ -7,4 +7,4 @@ $exporter = new StationExporter();
 header("Content-type: text/plain");
 header("Content-Disposition: attachment; filename=station.xml");
 
-print $exporter->generate(station(10250), -10, 0);
+print $exporter->generate(station($_GET['station_id']), -10, 0);
