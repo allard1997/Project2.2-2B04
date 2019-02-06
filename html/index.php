@@ -27,8 +27,7 @@ include('src/header.php');
             <div class="container">
                 <h1 class="display-3">Weather Information</h1>
                 <p>Webinterface for the Weather Information project for Aitken Space</p>
-
-                <? //als logged in: laat loguit + links zien ?>
+                
                 <?php if(isset($_SESSION['username']))	{ ?>
                     <p><a class="btn btn-danger btn-lg" href="src/scripts/logout.php" role="button">Logout &raquo;</a></p>
 
@@ -62,13 +61,13 @@ include('src/header.php');
     </main>
     </body>
 
-    <? } else{ //als niet logged in: laat login zien ?>
+    <?php } else{ //als niet logged in: laat login zien ?>
     <p><a class="btn btn-primary btn-lg" href="src/pages/form_login.php" role="button">Login &raquo;</a></p>
     </main>
     </body>
     <?php };
           ?>
-<?
+<?php
     include('src/footer.php');
     ?>
 
