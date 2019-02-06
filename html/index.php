@@ -1,3 +1,6 @@
+<?
+session_start();
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,12 +13,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
-<body>
 <?php
-
 include('src/header.php');
-
 ?>
+
+
+
     <body>
     <main role="main">
 
@@ -28,7 +31,7 @@ include('src/header.php');
                 <? //als niet logged in: laat login zien ?>
                 <?php if(!isset($_SESSION['username']))	{ ?>
                 <p><a class="btn btn-primary btn-lg" href="src/pages/form_login.php" role="button">Login &raquo;</a></p>
-                <? } //als wel logged in: laat user zien ?>
+                <? }else{ //als wel logged in: laat user zien ?>
 
             </div>
         </div>
@@ -57,7 +60,7 @@ include('src/header.php');
             <hr>
 
         </div> <!-- /container -->
-
+    <? }?>
     </main>
 
     <?php
