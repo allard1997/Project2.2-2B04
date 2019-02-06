@@ -108,6 +108,22 @@ if (!function_exists('stationDataLastWeek')) {
     }
 }
 
+if (!function_exists('format_data')) {
+    function format_data($data) {
+        $ret = [];
+        $count = $data['count'];
+        for ($i = 0; $i < $count; $i++) {
+            $section = [];
+            foreach ($data as $key => $values) {
+                $section[$key] = $values[$i];
+            }
+            $ret[] = $section;
+        }
+
+        return $ret;
+    }
+}
+
 if (!function_exists('today')) {
     function today(int $days = 0)
     {
