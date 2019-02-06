@@ -14,6 +14,7 @@
       <li class="nav-item">
         <a class="nav-link" href="index.php">Home</a>
       </li>
+        <?php if(isset($_SESSION['username']))	{ ?>
       <li class="nav-item">
         <a class="nav-link" href="station_overview.php">Search station</a>
       </li>
@@ -24,7 +25,10 @@
         <a class="nav-link disabled" href="#">Potential location map</a>
       </li>
     </ul>
-    <a href="login.php" class="btn btn-outline-dark my-2 my-sm-0">Login</a>
+      <a href="src/scripts/logout.php" class="btn btn-outline-dark my-2 my-sm-0">Logout</a>
+      <? }else{?>
+    <a href="src/pages/form_login.php" class="btn btn-outline-dark my-2 my-sm-0">Login</a>
+      <? } ?>
   </div>
 </nav>
 </br>

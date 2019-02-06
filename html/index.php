@@ -35,7 +35,6 @@ include('src/header.php');
 
             </div>
         </div>
-    </main>
 
         <div class="container">
             <!-- Example row of columns -->
@@ -60,12 +59,17 @@ include('src/header.php');
             <hr>
 
         </div> <!-- /container -->
-    <? } else{ //als niet logged in: laat user zien ?>
+    </main>
+    </body>
+
+    <? } else{ //als niet logged in: laat login zien ?>
     <p><a class="btn btn-primary btn-lg" href="src/pages/form_login.php" role="button">Login &raquo;</a></p>
     </main>
-
+    </body>
     <?php };
+          ?>
+<?
     include('src/footer.php');
     ?>
-</body>
+
 </html>
