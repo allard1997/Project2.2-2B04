@@ -11,12 +11,12 @@ include_once 'src/helper.php';
 class Station
 {
 
-    private $id;
-    private $country;
-    private $latitude;
-    private $longitude;
-    private $elevation;
-    private $name;
+    public $id;
+    public $country;
+    public $latitude;
+    public $longitude;
+    public $elevation;
+    public $name;
 
     public function __construct($data)
     {

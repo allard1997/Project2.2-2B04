@@ -1,3 +1,7 @@
+<?php
+    include_once '../../src/helper.php';
+?>
+
 <html>
 
 <head>
@@ -8,9 +12,4 @@
 </head>
 
 <body>
-    <div class="container">
-
-    </div>
-</body>
-
-</html>
+<div class="container">
