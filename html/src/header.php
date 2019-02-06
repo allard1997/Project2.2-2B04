@@ -31,6 +31,8 @@
       <a href="../../src/scripts/logout.php" class="btn btn-outline-dark my-2 my-sm-0">Logout</a>
       <? }elseif(!isset($_SESSION['username'])){?>
     <a href="../../src/pages/form_login.php" class="btn btn-outline-dark my-2 my-sm-0">Login</a>
+  </div>
+</nav>
       <? }; ?>
   </div>
 </nav>
