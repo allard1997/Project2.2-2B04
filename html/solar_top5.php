@@ -8,7 +8,7 @@
     <?php
         session_start();
         if(!isset($_SESSION['username']))	{
-            header("location:src/pages/form_login.php"); }
+            header("location:src/form_login.php"); }
         include 'src/helper.php';
         $setDate = $_POST["setDate"];
     ?>
