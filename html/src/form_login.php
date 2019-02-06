@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Login</title>
 </head>
-<?php include( '../header.php'); ?>
+<?php include( 'header.php'); ?>
 <body>
 
 <div role="main">
@@ -14,7 +14,7 @@
     <div class="container">
         <div class="row">
 
-            <form method="post" action="../scripts/login.php">
+            <form method="post" action="scripts/login.php">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Username</label>
                     <input type="username" class="form-control" id="username" name="username"placeholder="Username">
@@ -34,5 +34,5 @@
 </main>
 
 </body>
-<?php include ('../footer.php'); ?>
+<?php include ('footer.php'); ?>
 </html>
