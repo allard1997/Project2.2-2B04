@@ -18,6 +18,9 @@
       <li class="nav-item">
         <a class="nav-link" href="station_overview.php">Search station</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="map/stationmaps.php">Potential resort map</a>
+      </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Top 5's
@@ -26,9 +29,6 @@
           <a class="dropdown-item" href="solar_top5.php">Inefficient solar locations</a>
           <a class="dropdown-item" href="top5_resort.php">Potential resort locations</a>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="map/stationmap.php">Potential location map</a>
       </li>
     </ul>
       <a class="nav-link disabled" href="#">Hello <?php echo $_SESSION['username'];?>!</a>
