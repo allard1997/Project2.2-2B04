@@ -78,7 +78,7 @@ if (!function_exists('station_data')) {
     }
 }
 
-if (!function_exists('lastWeek')) {
+if (!function_exists('stationDataLastWeek')) {
     function stationDataLastWeek($stationId) {
         $ret = [];
         $index = 0;
