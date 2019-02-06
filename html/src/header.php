@@ -16,7 +16,7 @@
       </li>
         <?php if(isset($_SESSION['username'])){ ?>
         <li class="nav-item">
-            <a class="nav-link disabled" href="#">Hello <? echo $_SESSION['username'];?>!</a>
+            <a class="nav-link disabled" href="#">Hello <?php echo $_SESSION['username'];?>!</a>
         </li>
       <li class="nav-item">
         <a class="nav-link" href="station_overview.php">Search station</a>

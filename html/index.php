@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
  ?>
 <!DOCTYPE html>
@@ -27,7 +27,7 @@ include('src/header.php');
             <div class="container">
                 <h1 class="display-3">Weather Information</h1>
                 <p>Webinterface for the Weather Information project for Aitken Space</p>
-                
+
                 <?php if(isset($_SESSION['username']))	{ ?>
                     <p><a class="btn btn-danger btn-lg" href="src/scripts/logout.php" role="button">Logout &raquo;</a></p>
 
