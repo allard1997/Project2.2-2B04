@@ -60,7 +60,7 @@ include('src/header.php');
     </body>
 
     <?php } else{ //als niet logged in: laat login zien ?>
-    <p><a class="btn btn-primary btn-lg" href="src/pages/form_login.php" role="button">Login &raquo;</a></p>
+    <p><a class="btn btn-primary btn-lg" href="src/form_login.php" role="button">Login &raquo;</a></p>
     </main>
     <?php }; ?>
 <?php include('src/footer.php'); ?>
