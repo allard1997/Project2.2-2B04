@@ -1,4 +1,5 @@
 /.idea
-/html/data/*
-/html/station_info/*
+/data/*
 /pi_app
+html/data
+html/station_info

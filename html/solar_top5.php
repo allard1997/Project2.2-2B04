@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
 <body>
-<?php include 'src/header.php' ?>
+<?php include 'src/header.php'; ?>
 <div class="container">
     <h1>Top 5 for inefficient solar panel locations</h1>
     <h4>Sri Lanka and India</h4>
@@ -71,5 +71,6 @@
         ?>
         </tbody></table>
     </div>
+<?php include 'src/footer.php'; ?>
 </body>
 </html>
