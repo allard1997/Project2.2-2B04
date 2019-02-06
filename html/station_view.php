@@ -11,6 +11,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,15 +40,21 @@
 
             window.location=`xml_export.php?station_id=<?php echo $station->getId()?>&from=${from}&to=${to}`;
         }
+
+        function httpGet(theUrl)
+        {
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+            xmlHttp.send( null );
+            return xmlHttp.responseText;
+        }
+
     </script>
 
     <body>
         <div class="container">
-            <div class="row justify-content-center py-3">
-                <div class="col-12 py-3">
-                    <button type="button" class="btn btn-primary" onclick="window.location='station_overview.php'">Back to overview</button>
-                </div>
-                <div class="col-12">
+            <div class="row py-3">
+                <div class="col-12 justify-content-center">
                     <div class="card">
                         <div class="card-header">
                             <h5 class="card-title"><?php echo $station->getName() ?></h5>
@@ -98,6 +105,138 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <script type="text/javascript">
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+                            const station = JSON.parse(httpGet('/api/station.php?type=day&day=0&station_id=<?php echo $station->getId() ?>'));
+
+                            let graph = [
+                                ['Time', 'Temperature']
+                            ];
+
+                            station.data.forEach(entry => {
+                                graph.push([new Date(entry.time * 1000), entry.TEMP]);
+                            });
+
+                            const data = google.visualization.arrayToDataTable(graph);
+
+                            let options = {
+                                title: "Temperature today",
+                                curveType: 'function',
+                                legend: { position: 'bottom' }
+                            };
+
+                            let chart = new google.visualization.LineChart(document.getElementById('chart_today'));
+
+                            chart.draw(data, options);
+                        }
+                    </script>
+
+                    <div id="chart_today" style="width: 100%; height: 500px"></div>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <script type="text/javascript">
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+                            const station = JSON.parse(httpGet('/api/station.php?type=week&station_id=<?php echo $station->getId() ?>'));
+
+                            let graph = [
+                                ['Time', 'Temperature']
+                            ];
+
+                            station.data.forEach(entry => {
+                                graph.push([new Date(entry.time * 1000), entry.TEMP]);
+                            });
+
+                            const data = google.visualization.arrayToDataTable(graph);
+
+                            let options = {
+                                title: "Temperature last 7 days",
+                                curveType: 'function',
+                                legend: { position: 'bottom' }
+                            };
+
+                            let chart = new google.visualization.LineChart(document.getElementById('chart_week'));
+
+                            chart.draw(data, options);
+                        }
+                    </script>
+
+                    <div id="chart_week" style="width: 100%; height: 500px"></div>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <script type="text/javascript">
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+                            const station = JSON.parse(httpGet('/api/station.php?type=day&day=0&station_id=<?php echo $station->getId() ?>'));
+
+                            let graph = [
+                                ['Time', 'Rainfall']
+                            ];
+
+                            station.data.forEach(entry => {
+                                graph.push([new Date(entry.time * 1000), entry.PRCP]);
+                            });
+
+                            const data = google.visualization.arrayToDataTable(graph);
+
+                            let options = {
+                                title: "Rainfall today",
+                                curveType: 'function',
+                                legend: { position: 'bottom' }
+                            };
+
+                            let chart = new google.visualization.LineChart(document.getElementById('chart_rain_today'));
+
+                            chart.draw(data, options);
+                        }
+                    </script>
+
+                    <div id="chart_rain_today" style="width: 100%; height: 500px"></div>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                    <script type="text/javascript">
+                        google.charts.load('current', {'packages':['corechart']});
+                        google.charts.setOnLoadCallback(drawChart);
+
+                        function drawChart() {
+                            const station = JSON.parse(httpGet('/api/station.php?type=week&station_id=<?php echo $station->getId() ?>'));
+
+                            let graph = [
+                                ['Time', 'Rainfall']
+                            ];
+
+                            station.data.forEach(entry => {
+                                graph.push([new Date(entry.time * 1000), entry.PRCP]);
+                            });
+
+                            const data = google.visualization.arrayToDataTable(graph);
+
+                            let options = {
+                                title: "Rainfall last 7 days",
+                                curveType: 'function',
+                                legend: { position: 'bottom' }
+                            };
+
+                            let chart = new google.visualization.LineChart(document.getElementById('chart_rain_week'));
+
+                            chart.draw(data, options);
+                        }
+                    </script>
+
+                    <div id="chart_rain_week" style="width: 100%; height: 500px"></div>
                 </div>
             </div>
         </div>
