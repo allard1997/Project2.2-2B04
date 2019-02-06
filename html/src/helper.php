@@ -72,6 +72,8 @@ if (!function_exists('station_data')) {
             }
         }
 
+        $data['count'] = count($data['time']);
+
         return $data;
     }
 }

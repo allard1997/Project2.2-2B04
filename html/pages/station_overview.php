@@ -46,7 +46,7 @@ if (isset($_GET['countries'])) {
                         Country
                     </span>
                 </div>
-                <input id="countries" type="text" class="form-control" placeholder="e.g: india,netherlands,sri lanka">
+                <input id="countries" type="text" value="<?php echo $_GET['countries']?>" class="form-control" placeholder="e.g: india,netherlands,sri lanka">
             </div>
         </div>
         <div class="col-6">
