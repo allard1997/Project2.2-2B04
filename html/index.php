@@ -28,15 +28,15 @@ include('src/header.php');
                 <h1 class="display-3">Weather Information</h1>
                 <p>Webinterface for the Weather Information project for Aitken Space</p>
 
-                <? //als niet logged in: laat login zien ?>
-                <?php if(!isset($_SESSION['username']))	{ ?>
-                <p><a class="btn btn-primary btn-lg" href="src/pages/form_login.php" role="button">Login &raquo;</a></p>
-                <? }else{ //als wel logged in: laat user zien ?>
+                <? //als logged in: laat loguit + links zien ?>
+                <?php if(isset($_SESSION['username']))	{ ?>
+                    <p><a class="btn btn-danger btn-lg" href="src/scripts/logout.php" role="button">Logout &raquo;</a></p>
+
 
             </div>
         </div>
+    </main>
 
-        <? //als wel logged in?>
         <div class="container">
             <!-- Example row of columns -->
             <div class="row">
@@ -60,10 +60,11 @@ include('src/header.php');
             <hr>
 
         </div> <!-- /container -->
-    <? }?>
+    <? } else{ //als niet logged in: laat user zien ?>
+    <p><a class="btn btn-primary btn-lg" href="src/pages/form_login.php" role="button">Login &raquo;</a></p>
     </main>
 
-    <?php
+    <?php };
     include('src/footer.php');
     ?>
 </body>
