@@ -1,4 +1,4 @@
-<?php include_once '../src/helper.php' ?>
+<?php include_once 'src/helper.php' ?>
 
 <?php
     $station = station($_GET['station_id']);
@@ -19,11 +19,28 @@
         }
     </style>
 
+    <script>
+        function convert() {
+            const from = document.getElementById('from').value;
+            const to = document.getElementById('to').value;
+
+            console.log(from);
+            console.log(to);
+
+            if (from >= to || from === 'From date' || to === 'To date') {
+                alert("from date must BEFORE to date");
+                return;
+            }
+
+            window.location=`xml_export.php?station_id=<?php echo $station->getId()?>&from=${from}&to=${to}`;
+        }
+    </script>
+
     <body>
         <div class="container">
             <div class="row justify-content-center py-3">
                 <div class="col-12 py-3">
-                    <button type="button" class="btn btn-primary" onclick="window.location='/pages/station_overview.php'">Back to overview</button>
+                    <button type="button" class="btn btn-primary" onclick="window.location='station_overview.php'">Back to overview</button>
                 </div>
                 <div class="col-12">
                     <div class="card">
@@ -55,7 +72,25 @@
                             </ul>
                         </div>
                         <div class="card-footer">
-                            <button type="button" class="btn btn-success" onclick="window.location='/pages/xml_export.php?station_id=<?php echo $station->getId()?>'">Export to XML</button>
+                            <div class="form-group float-left px-3">
+                                <button type="button" class="btn btn-success" onclick="convert()">Export to XML</button>
+                            </div>
+                            <div class="form-group w-25 float-left px-3">
+                                <select id="from" class="form-control">
+                                    <option disabled selected>From date</option>
+                                    <?php for ($i = 0; $i < 7; $i++): ?>
+                                        <option value="<?php echo -$i?>"><?php echo today(-$i) ?></option>
+                                    <?php endfor; ?>
+                                </select>
+                            </div>
+                            <div class="form-group w-25 float-left px-3">
+                                <select id="to" class="form-control">
+                                    <option disabled selected>To date</option>
+                                    <?php for ($i = 0; $i < 7; $i++): ?>
+                                        <option value="<?php echo -$i?>"><?php echo today(-$i) ?></option>
+                                    <?php endfor; ?>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>

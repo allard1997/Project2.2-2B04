@@ -25,11 +25,11 @@
   if(isset($_SESSION['username']))	{
     echo '<a href="../scripts/logout.php">Logout</a>';
 	} else {
-    echo '<a href="../pages/frm_login.php">Login</a>';
+    echo '<a href="..frm_login.php">Login</a>';
    }
    ?>
-    <a href='../pages/'>Placeholder 1</a>
-    <a href='../pages/top5.php'>Top 5's</a>
+    <a href='..'>Placeholder 1</a>
+    <a href='..top5.php'>Top 5's</a>
   </div>
 </div>
 <div class="header">
