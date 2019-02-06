@@ -7,9 +7,6 @@
     <title>Top 5</title>
     <?php
         include 'src/helper.php';
-        ini_set('display_startup_errors',1);
-        ini_set('display_errors',1);
-        error_reporting(-1);
         $setDate = $_POST["setDate"];
     ?>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -19,28 +16,31 @@
 </head>
 <body>
 <?php include 'src/header.php'; ?>
+<div class="jumbotron">
 <div class="container">
-    <h1>Top 5 for inefficient solar panel locations</h1>
-    <h4>Sri Lanka and India</h4>
-    <br>
+    <h1 class="display-4">Top 5 for inefficient solar panel locations</h1>
+    <p class="lead">Sri Lanka and India</p>
+</div>
+</div>
+<div class="container">
     <div class="dropdown">
         <form action="solar_top5.php" method="post">
             Select a date:
-            <select class="btn btn-secondary btn-sm dropdown-toggle" name="setDate">
+            <select class="btn btn-outline-secondary btn-sm dropdown-toggle" name="setDate">
             <?php
                 for ($i=0; $i<7; $i++){
                     if ($setDate == $i) {
-                        echo "<option value=".$setDate." selected>".today(-$i)."_$i</option>";
+                        echo "<option value=".$setDate." selected>".today(-$i)."</option>";
                     } else {
-                        echo "<option value=".$i.">".today(-$i)."_$i</option>";
+                        echo "<option value=".$i.">".today(-$i)."</option>";
                     }
                 };
             ?>
-            <input class="btn btn-sm btn-primary" style="margin:5px" type="submit" value="Select">
+            <input class="btn btn-sm btn-outline-primary" style="margin:5px" type="submit" value="Select">
             </select>
         </form>
     </div>
-    <br>
+    </br>
     <div>
         <?php
             $data = [];
@@ -56,16 +56,18 @@
                     'stationID' => $station->getId(),
                     'avarageTemperature' => array_sum($stationData['TEMP']) / count($stationData['TEMP']),
                     'avarageRainfall' => array_sum($stationData['PRCP']) / count($stationData['PRCP']),
-                    'stationName' => $station->getName()
+                    'stationName' => $station->getName(),
+                    'stationCountry' => $station->getCountry(),
                 ];
             }
             array_multisort(array_column($data, 'avarageTemperature'), SORT_DESC, array_column($data, 'avarageRainfall'), SORT_DESC, $data);
         ?>
-        <table class="table table-striped table-bordered"><thead class="thead-light"><tr><th>StationID</th><th>StationName</th><th>Temp</th><th>Rainfall</th></tr></thead>
+        <table class="table table-striped table-bordered"><thead class="thead-light"><tr><th>Country</th><th>Name</th><th>Temp</th><th>Rainfall</th><th>Info</th></tr></thead>
         <?php
             $i=0;
             foreach ($data as $data) {
-                echo "<tr><td>".$data['stationID']."</td><td>".ucfirst(strtolower($data['stationName']))."</td><td>".number_format($data['avarageTemperature'],1)." °C</td><td>".number_format($data['avarageRainfall']*10,2)." mm</td></tr>";
+                echo "<tr><td>".ucfirst(strtolower($data['stationCountry']))."</td><td>".ucfirst(strtolower($data['stationName']))."</td><td>".number_format($data['avarageTemperature'],1)." °C</td><td>".number_format($data['avarageRainfall']*10,2)." mm</td><td>
+                <a href='/station_view.php?station_id=".$data['stationID']."' class='btn btn-outline-primary btn-sm' role='button' aria-pressed='true'>Open</a></td></tr>";
                 if ($i++ == 4) break;
             }
         ?>
