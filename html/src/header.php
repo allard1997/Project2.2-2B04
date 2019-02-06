@@ -1,5 +1,7 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-<a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="#">
     <img src="https://material.io/tools/icons/static/icons/baseline-wb_sunny-24px.svg" width="30" height="30" class="d-inline-block align-top" alt="">
     Weather information
   </a>

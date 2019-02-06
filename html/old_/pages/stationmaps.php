@@ -8,7 +8,7 @@
  */
 
 include("../header.php");
-include ("../scripts/functions.php");
+include("../scripts/functions.php");
 ?>
 <body>
 

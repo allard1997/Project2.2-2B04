@@ -12,7 +12,9 @@
 </head>
 <body>
 <?php
+
 include('src/header.php');
+
 ?>
     <body>
     <main role="main">
@@ -24,8 +26,9 @@ include('src/header.php');
                 <p>Webinterface for the Weather Information project for Aitken Space</p>
 
                 <? //als niet logged in: laat login zien ?>
-                <p><a class="btn btn-primary btn-lg" href="/src/login.php" role="button">Login &raquo;</a></p>
-                <? //als wel logged in: laat user zien ?>
+                <?php if(!isset($_SESSION['username']))	{ ?>
+                <p><a class="btn btn-primary btn-lg" href="src/pages/form_login.php" role="button">Login &raquo;</a></p>
+                <? } //als wel logged in: laat user zien ?>
 
             </div>
         </div>
