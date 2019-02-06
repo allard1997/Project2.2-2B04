@@ -15,7 +15,7 @@ if(isset($_POST['submit']))	{
 else{
 	echo "<script>alert('Invalid login details')</script>";
 	?>
-	<a href="../pages/frm_login.php">Click here to try again</a>
+	<a href="..frm_login.php">Click here to try again</a>
 	<?php
 	}
 }

@@ -6,13 +6,8 @@ ini_set('display_startup_errors',1);
 ini_set('display_errors',1);
 error_reporting(-1);
 
-foreach (stations(['INDIA']) as $station) {
-    /** @var Station $station */
-    echo '<pre>';
+echo '<pre>';
 
-    $data = $station->data(today(), time() - 3600, time());
-    print_r(array_sum($data['TEMP']) / count($data));
+print_r(stationDataLastWeek(10010));
 
-    echo '</pre>';
-    break;
-}
+echo '</pre>';
