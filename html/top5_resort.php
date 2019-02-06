@@ -1,4 +1,9 @@
 <?php
+
+session_start();
+if(!isset($_SESSION['username']))	{
+    header("location:src/pages/form_login.php"); }
+			
 include 'src/model/Station.php';
 include 'src/helper.php';
 ini_set('display_startup_errors',1);
@@ -9,9 +14,12 @@ error_reporting(-1);
 foreach (stations() as $station) {
     /** @var Station $station */
     $stationData = stationDataLastWeek($station->getId());
+	$country = ($station->getCountry());
+	$location = ($station->getName());
 	$tempc = round(array_sum($stationData['TEMP']) / count($stationData['TEMP']), 2);
 	$dew = round(array_sum($stationData['DEWP']) / count($stationData['DEWP']), 2);
     $maxTemp = round(max($stationData['TEMP']),1);
+	//correct rainfall to mm 
     $maxRainfall = round(10 * max($stationData['PRCP']), 2);
 	
 	//Heatindex calculation
@@ -31,9 +39,12 @@ foreach (stations() as $station) {
 	//Put data in array
     $data[] = [
         'stationID' => $station->getId(),
+		'Country' => $country,
+		'Location' => $location,
         'maxTemperature' => $maxTemp,
         'maxRain' => $maxRainfall,
 		'Heatindex' => $HIC,
+		
     ];
 }
 
@@ -117,14 +128,14 @@ usort($resortData, function($a, $b) {
 <div class="container">
     <div class="dropdown">
         <form action="top5_resort.php" method="post">
-            Select a date:
+            Select a week:
             <select class="btn btn-secondary btn-sm dropdown-toggle" name="setDate">
             <?php
-                for ($i=0; $i<7; $i++){
+                for ($i=0; $i<4; $i++){
                     if ($setDate == $i) {
-                        echo "<option value=".$setDate." selected>".today(-$i)."_$i</option>";
+                        echo "<option value=".$setDate." selected>".stationDataLastWeek($station->getId())."_$i</option>";
                     } else {
-                        echo "<option value=".$i.">".today(-$i)."_$i</option>";
+                        echo "<option value=".$i.">".stationDataLastWeek($station->getId())."_$i</option>";
                     }
                 };
             ?>
@@ -134,10 +145,10 @@ usort($resortData, function($a, $b) {
     </div>
 	<div>
      
-        <table class="table table-striped table-bordered"><thead class="thead-light"><tr><th>StationID</th><th>maximum Temperature C</th><th>maximum rainfall mm</th><th>Heatindex</th></tr></thead>
+        <table class="table table-striped table-bordered"><thead class="thead-light"><tr><th>StationID</th><th>Country</th><th>Location</th><th>Heatindex</th><th>Max. rainfall mm</th><th>Max. temperature C</th></tr></thead>
         <?php
            foreach ($resortData as $a => $b)	{
-					echo "<tr><td>".$b['stationID']."</td><td>".$b['maxTemperature']."</td><td>".$b['maxRain']."</td><td>".round($b['Heatindex'],1)."</td></tr>";
+					echo "<tr><td>".$b['stationID']."</td><td>".$b['Country']."</td><td>".$b['Location']."</td><td>".round($b['Heatindex'],1)."</td><td>".$b['maxRain']."</td><td>".$b['maxTemperature']."</td></tr>";
 				}
         ?>
         </tbody></table>
