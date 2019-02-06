@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Top 5</title>
     <?php
+        session_start();
+        if(!isset($_SESSION['username']))	{
+            header("location:src/pages/form_login.php"); }
         include 'src/helper.php';
         $setDate = $_POST["setDate"];
     ?>

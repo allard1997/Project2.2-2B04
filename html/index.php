@@ -1,6 +1,6 @@
 <?php
 session_start();
- ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,7 +26,7 @@ include('src/header.php');
         <div class="jumbotron">
             <div class="container">
                 <h1 class="display-3">Weather Information</h1>
-                <p>Webinterface for the Weather Information project for Aitken Space</p>
+                <p>Webinterface for the Weather Information project for Aitken Spence.</p>
 
                 <?php if(isset($_SESSION['username']))	{ ?>
                     <p><a class="btn btn-danger btn-lg" href="src/scripts/logout.php" role="button">Logout &raquo;</a></p>
@@ -55,8 +55,6 @@ include('src/header.php');
                 </div>
             </div>
 
-            <hr>
-
         </div> <!-- /container -->
     </main>
     </body>
@@ -64,11 +62,7 @@ include('src/header.php');
     <?php } else{ //als niet logged in: laat login zien ?>
     <p><a class="btn btn-primary btn-lg" href="src/pages/form_login.php" role="button">Login &raquo;</a></p>
     </main>
-    </body>
-    <?php };
-          ?>
-<?php
-    include('src/footer.php');
-    ?>
-
+    <?php }; ?>
+<?php include('src/footer.php'); ?>
+</body>
 </html>
