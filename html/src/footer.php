@@ -1,3 +1,3 @@
 <footer class="container">
-    <p>&copy; Weather information - 2019</p>
+    <p>&copy; 2019 Aitken Space - Weather information</p>
 </footer>
