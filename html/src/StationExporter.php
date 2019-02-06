@@ -13,7 +13,7 @@ class StationExporter
         $xml = [];
 
         $index = 0;
-        for ($day = $from; $day < $to; $day++) {
+        for ($day = $from; $day <= $to; $day++) {
             $stationData = $station->data(today($day));
             $count = $stationData['count'];
             for ($i = 0; $i < $count; $i++) {

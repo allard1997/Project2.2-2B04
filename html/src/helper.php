@@ -78,6 +78,36 @@ if (!function_exists('station_data')) {
     }
 }
 
+if (!function_exists('stationDataLastWeek')) {
+    function stationDataLastWeek($stationId) {
+        $ret = [];
+        $index = 0;
+
+        for ($day = -7; $day <= 0; $day++) {
+            $stationData = station_data(today($day), $stationId);
+
+            if (is_null($stationData)) {
+                continue;
+            }
+
+            foreach($stationData as $key => $data) {
+
+                if ($key === 'count') {
+                    continue;
+                }
+
+                foreach ($data as $value) {
+                    $ret[$key][] = $value;
+                }
+            }
+        }
+
+        $ret['count'] = count($ret['time']);
+
+        return $ret;
+    }
+}
+
 if (!function_exists('today')) {
     function today(int $days = 0)
     {
