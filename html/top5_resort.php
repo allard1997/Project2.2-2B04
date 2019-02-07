@@ -8,7 +8,7 @@ include 'src/model/Station.php';
 include 'src/helper.php';
 $setDate = $_POST["setDate"];
 
-
+$data = [];
 foreach (stations() as $station) {
     /** @var Station $station */
     $stationData = stationDataLastWeek($station->getId());
