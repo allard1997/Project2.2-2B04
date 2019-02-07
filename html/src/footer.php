@@ -1,3 +1,4 @@
 <footer class="container">
-    <p>&copy; Weather information - 2019</p>
+    <hr>
+    <p>&copy; 2019 Aitken Spence - Weather information</p>
 </footer>

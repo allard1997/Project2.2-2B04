@@ -4,9 +4,6 @@ include_once 'DataHandler.php';
 include_once 'model/Station.php';
 
 date_default_timezone_set('Europe/Amsterdam');
-ini_set('display_startup_errors',1);
-ini_set('display_errors',1);
-error_reporting(-1);
 
 if (!function_exists('stations')) {
     function stations($countries = null): array
@@ -75,6 +72,52 @@ if (!function_exists('station_data')) {
         $data['count'] = count($data['time']);
 
         return $data;
+    }
+}
+
+if (!function_exists('stationDataLastWeek')) {
+    function stationDataLastWeek($stationId) {
+        $ret = [];
+        $index = 0;
+
+        for ($day = -7; $day <= 0; $day++) {
+            $stationData = station_data(today($day), $stationId);
+
+            if (is_null($stationData)) {
+                continue;
+            }
+
+            foreach($stationData as $key => $data) {
+
+                if ($key === 'count') {
+                    continue;
+                }
+
+                foreach ($data as $value) {
+                    $ret[$key][] = $value;
+                }
+            }
+        }
+
+        $ret['count'] = count($ret['time']);
+
+        return $ret;
+    }
+}
+
+if (!function_exists('format_data')) {
+    function format_data($data) {
+        $ret = [];
+        $count = $data['count'];
+        for ($i = 0; $i < $count; $i++) {
+            $section = [];
+            foreach ($data as $key => $values) {
+                $section[$key] = $values[$i];
+            }
+            $ret[] = $section;
+        }
+
+        return $ret;
     }
 }
 
