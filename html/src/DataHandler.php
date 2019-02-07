@@ -6,7 +6,7 @@
  * Time: 3:15 PM
  */
 
-include_once '/src/Decrypt.php';
+include_once 'src/Decrypt.php';
 
 class DataHandler
 {
