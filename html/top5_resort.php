@@ -57,10 +57,13 @@ foreach (stations() as $station) {
 		
     ];
 }
-
+$resortData = [];
+for ($i = 0; $i < 5; $i++) {
+    $resortData[] = $data[$i];
+}
 
 //Sort temperature 
-usort($data, function($a , $b) {
+usort($resortData, function($a , $b) {
     $_a = $a['maxTemperature'];
     $_b = $b['maxTemperature'];
 
@@ -75,11 +78,8 @@ usort($data, function($a , $b) {
     return 0;
 });
 
-$resortData = [];
 
-for ($i = 0; $i < 5; $i++) {
-    $resortData[] = $data[$i];
-}
+
 
 //Sort rainfall
 usort($resortData, function($a, $b) {
