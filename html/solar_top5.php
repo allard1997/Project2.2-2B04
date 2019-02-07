@@ -79,6 +79,7 @@
         <?php } else { 
             echo "<h1>No data available for this date.</h1><h4>Please choose another date from the select menu.</h4></br>"; } ?>
     </div>
+</div>
 <?php include 'src/footer.php'; ?>
 </body>
 </html>
