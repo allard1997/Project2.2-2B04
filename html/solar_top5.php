@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Top 5</title>
+    <title>Inefficient locations</title>
     <?php
+        session_start();
+        if(!isset($_SESSION['username']))	{
+            header("location:src/form_login.php"); }
         include 'src/helper.php';
         $setDate = $_POST["setDate"];
     ?>
@@ -17,10 +20,10 @@
 <body>
 <?php include 'src/header.php'; ?>
 <div class="jumbotron">
-<div class="container">
-    <h1 class="display-4">Top 5 for inefficient solar panel locations</h1>
-    <p class="lead">Sri Lanka and India</p>
-</div>
+    <div class="container">
+        <h1 class="display-4">Top 5 for inefficient solar panel locations</h1>
+        <p class="lead">Sri Lanka and India</p>
+    </div>
 </div>
 <div class="container">
     <div class="dropdown">
@@ -51,7 +54,7 @@
                 } else {
                     $stationData = $station->data(today());
                 }
-
+                
                 $data[] = [
                     'stationID' => $station->getId(),
                     'avarageTemperature' => array_sum($stationData['TEMP']) / count($stationData['TEMP']),
@@ -60,9 +63,10 @@
                     'stationCountry' => $station->getCountry(),
                 ];
             }
+            if (isset($stationData['TEMP'])) {
             array_multisort(array_column($data, 'avarageTemperature'), SORT_DESC, array_column($data, 'avarageRainfall'), SORT_DESC, $data);
         ?>
-        <table class="table table-striped table-bordered"><thead class="thead-light"><tr><th>Country</th><th>Name</th><th>Temp</th><th>Rainfall</th><th>Info</th></tr></thead>
+            <table class="table table-striped table-bordered"><thead class="thead-light"><tr><th>Country</th><th>Name</th><th>Temp</th><th>Rainfall</th><th>Info</th></tr></thead>
         <?php
             $i=0;
             foreach ($data as $data) {
@@ -72,6 +76,8 @@
             }
         ?>
         </tbody></table>
+        <?php } else { 
+            echo "<h1>No data available for this date.</h1><h4>Please choose another date from the select menu.</h4></br>"; } ?>
     </div>
 <?php include 'src/footer.php'; ?>
 </body>
