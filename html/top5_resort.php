@@ -6,6 +6,11 @@ if(!isset($_SESSION['username']))	{
 			
 include 'src/model/Station.php';
 include 'src/helper.php';
+$setDate = $_POST["setDate"];
+ini_set('display_startup_errors',1);
+ini_set('display_errors',1);
+error_reporting(-1);
+
 
 foreach (stations() as $station) {
     /** @var Station $station */
@@ -21,9 +26,21 @@ foreach (stations() as $station) {
 	//Heatindex calculation
 	$F = $tempc * 9 / 5 + 32;
 	$RH = 100*((112-0.1*$tempc + $dew)/(112+0.9*$tempc))**8;
-	$HIF = -42.379 + (2.04901523*$F) + (10.14333127*$RH) - (0.22475541*$F*$RH) - (6.83783*(10**-3)*($F**2)) - (5.481717*(10**-2)*($RH**2)) + (1.22874*(10**-3)*($F**2)*$RH) + (8.5282*(10**-4)*$F*($RH**2)) - (1.99*(10**-6)*($F**2)*($RH**2));
+	if ($F >= 80)	{
+	$HIF = -42.379 + 
+	(2.04901523*$F) +
+	(10.14333127*$RH) - 
+	(0.22475541*$F*$RH) - 
+	(6.83783*(10**-3)*($F**2)) - 
+	(5.481717*(10**-2)*($RH**2)) + 
+	(1.22874*(10**-3)*($F**2)*$RH) + 
+	(8.5282*(10**-4)*$F*($RH**2)) - 
+	(1.99*(10**-6)*($F**2)*($RH**2));
+	}	else{
+		continue;
+	}
 	$HIC = ($HIF-32)/1.8;
-	
+
     if ($maxTemp > 27.999999) {
         continue;
     }
@@ -101,6 +118,7 @@ usort($resortData, function($a, $b) {
 
 ?>
 
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -129,9 +147,9 @@ usort($resortData, function($a, $b) {
             <?php
                 for ($i=0; $i<4; $i++){
                     if ($setDate == $i) {
-                        echo "<option value=".$setDate." selected>".stationDataLastWeek($station->getId())."_$i</option>";
+                        echo "<option value=".$setDate." selected>".today(-$i*7)."_$i</option>";
                     } else {
-                        echo "<option value=".$i.">".stationDataLastWeek($station->getId())."_$i</option>";
+                        echo "<option value=".$i.">".today(-$i*7)."_$i</option>";
                     }
                 };
             ?>
@@ -140,8 +158,7 @@ usort($resortData, function($a, $b) {
         </form>
     </div>
 	<div>
-     
-        <table class="table table-striped table-bordered"><thead class="thead-light"><tr><th>StationID</th><th>Country</th><th>Location</th><th>Heatindex</th><th>Max. rainfall mm</th><th>Max. temperature C</th></tr></thead>
+		<table class="table table-striped table-bordered"><thead class="thead-light"><tr><th>StationID</th><th>Country</th><th>Location</th><th>Heatindex °C</th><th>Max. rainfall mm.</th><th>Max. temperature  °C</th></tr></thead>
         <?php
            foreach ($resortData as $a => $b)	{
 					echo "<tr><td>".$b['stationID']."</td><td>".$b['Country']."</td><td>".$b['Location']."</td><td>".round($b['Heatindex'],1)."</td><td>".$b['maxRain']."</td><td>".$b['maxTemperature']."</td></tr>";
