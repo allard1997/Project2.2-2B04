@@ -8,62 +8,59 @@ include 'src/model/Station.php';
 include 'src/helper.php';
 $setDate = $_POST["setDate"];
 
-$data = [];
+
 foreach (stations() as $station) {
     /** @var Station $station */
     $stationData = stationDataLastWeek($station->getId());
-	$country = ($station->getCountry());
-	$location = ($station->getName());
-	$tempc = round(array_sum($stationData['TEMP']) / count($stationData['TEMP']), 2);
-	$dew = round(array_sum($stationData['DEWP']) / count($stationData['DEWP']), 2);
+    $country = ($station->getCountry());
+    $location = ($station->getName());
+    $tempc = round(array_sum($stationData['TEMP']) / count($stationData['TEMP']), 2);
+    $dew = round(array_sum($stationData['DEWP']) / count($stationData['DEWP']), 2);
     $maxTemp = round(max($stationData['TEMP']),1);
-	//correct rainfall to mm 
+    //correct rainfall to mm
     $maxRainfall = round(10 * max($stationData['PRCP']), 2);
-	
-	//Heatindex calculation
-	$F = $tempc * 9 / 5 + 32;
-	$RH = 100*((112-0.1*$tempc + $dew)/(112+0.9*$tempc))**8;
-	if ($F >= 80)	{
-	$HIF = -42.379 + 
-	(2.04901523*$F) +
-	(10.14333127*$RH) - 
-	(0.22475541*$F*$RH) - 
-	(6.83783*(10**-3)*($F**2)) - 
-	(5.481717*(10**-2)*($RH**2)) + 
-	(1.22874*(10**-3)*($F**2)*$RH) + 
-	(8.5282*(10**-4)*$F*($RH**2)) - 
-	(1.99*(10**-6)*($F**2)*($RH**2));
-	}	else{
-		//continue;
-	}
-	$HIC = ($HIF-32)/1.8;
+
+    //Heatindex calculation
+    $F = $tempc * 9 / 5 + 32;
+    $RH = 100*((112-0.1*$tempc + $dew)/(112+0.9*$tempc))**8;
+    if ($F >= 80)	{
+        $HIF = -42.379 +
+            (2.04901523*$F) +
+            (10.14333127*$RH) -
+            (0.22475541*$F*$RH) -
+            (6.83783*(10**-3)*($F**2)) -
+            (5.481717*(10**-2)*($RH**2)) +
+            (1.22874*(10**-3)*($F**2)*$RH) +
+            (8.5282*(10**-4)*$F*($RH**2)) -
+            (1.99*(10**-6)*($F**2)*($RH**2));
+    }	else{
+        continue;
+    }
+    $HIC = ($HIF-32)/1.8;
 
     if ($maxTemp > 27.999999) {
-        //continue;
+        continue;
     }
 
     if ($maxRainfall > 1)	{
-        //continue;
+        continue;
     }
-	
-	//Put data in array
+
+    //Put data in array
     $data[] = [
         'stationID' => $station->getId(),
-		'Country' => $country,
-		'Location' => $location,
+        'Country' => $country,
+        'Location' => $location,
         'maxTemperature' => $maxTemp,
         'maxRain' => $maxRainfall,
-		'Heatindex' => $HIC,
-		
+        'Heatindex' => $HIC,
+
     ];
 }
-$resortData = [];
-for ($i = 0; $i < 5; $i++) {
-    $resortData[] = $data[$i];
-}
 
-//Sort temperature 
-usort($resortData, function($a , $b) {
+
+//Sort temperature
+usort($data, function($a , $b) {
     $_a = $a['maxTemperature'];
     $_b = $b['maxTemperature'];
 
@@ -78,7 +75,10 @@ usort($resortData, function($a , $b) {
     return 0;
 });
 
-
+$resortData = [];
+for ($i = 0; $i < 5; $i++) {
+    $resortData[] = $data[$i];
+}
 
 
 //Sort rainfall
@@ -140,7 +140,7 @@ usort($resortData, function($a, $b) {
         <form action="top5_resort.php" method="post">
             Select a week:
             <select class="btn btn-secondary btn-sm dropdown-toggle" name="setDate">
-            <?php
+                <?php
                 for ($i=0; $i<4; $i++){
                     if ($setDate == $i) {
                         echo "<option value=".$setDate." selected>".today(-$i*7)."_$i</option>";
@@ -148,22 +148,22 @@ usort($resortData, function($a, $b) {
                         echo "<option value=".$i.">".today(-$i*7)."_$i</option>";
                     }
                 };
-            ?>
-            <input class="btn btn-sm btn-primary" style="margin:5px" type="submit" value="Select">
+                ?>
+                <input class="btn btn-sm btn-primary" style="margin:5px" type="submit" value="Select">
             </select>
         </form>
     </div>
-	<div>
-		<table class="table table-striped table-bordered"><thead class="thead-light"><tr><th>StationID</th><th>Country</th><th>Location</th><th>Heatindex °C</th><th>Max. rainfall mm.</th><th>Max. temperature  °C</th></tr></thead>
-        <?php
-           foreach ($resortData as $a => $b)	{
-					echo "<tr><td>".$b['stationID']."</td><td>".$b['Country']."</td><td>".$b['Location']."</td><td>".round($b['Heatindex'],1)."</td><td>".$b['maxRain']."</td><td>".$b['maxTemperature']."</td></tr>";
-				}
-        ?>
-        </tbody></table>
+    <div>
+        <table class="table table-striped table-bordered"><thead class="thead-light"><tr><th>StationID</th><th>Country</th><th>Location</th><th>Heatindex °C</th><th>Max. rainfall mm.</th><th>Max. temperature  °C</th></tr></thead>
+            <?php
+            foreach ($resortData as $a => $b)	{
+                echo "<tr><td>".$b['stationID']."</td><td>".$b['Country']."</td><td>".$b['Location']."</td><td>".round($b['Heatindex'],1)."</td><td>".$b['maxRain']."</td><td>".$b['maxTemperature']."</td></tr>";
+            }
+            ?>
+            </tbody></table>
     </div>
 
-<?php include 'src/footer.php'; ?>
+    <?php include 'src/footer.php'; ?>
 
 </body>
 </html> 
