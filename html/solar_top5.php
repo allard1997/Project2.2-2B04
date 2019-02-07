@@ -54,7 +54,7 @@
                 } else {
                     $stationData = $station->data(today());
                 }
-                
+
                 $data[] = [
                     'stationID' => $station->getId(),
                     'avarageTemperature' => array_sum($stationData['TEMP']) / count($stationData['TEMP']),
@@ -63,10 +63,9 @@
                     'stationCountry' => $station->getCountry(),
                 ];
             }
-            if (isset($stationData['TEMP'])) {
             array_multisort(array_column($data, 'avarageTemperature'), SORT_DESC, array_column($data, 'avarageRainfall'), SORT_DESC, $data);
         ?>
-            <table class="table table-striped table-bordered"><thead class="thead-light"><tr><th>Country</th><th>Name</th><th>Temp</th><th>Rainfall</th><th>Info</th></tr></thead>
+        <table class="table table-striped table-bordered"><thead class="thead-light"><tr><th>Country</th><th>Name</th><th>Temp</th><th>Rainfall</th><th>Info</th></tr></thead>
         <?php
             $i=0;
             foreach ($data as $data) {
@@ -76,8 +75,6 @@
             }
         ?>
         </tbody></table>
-        <?php } else { 
-            echo "<h1>No data available for this date.</h1><h4>Please choose another date from the select menu.</h4></br>"; } ?>
     </div>
 <?php include 'src/footer.php'; ?>
 </body>
