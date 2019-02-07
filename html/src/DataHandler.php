@@ -6,6 +6,8 @@
  * Time: 3:15 PM
  */
 
+include_once 'src/Decrypt.php';
+
 class DataHandler
 {
 
@@ -16,6 +18,7 @@ class DataHandler
 
     public function __construct(String $json)
     {
+        $json = Decrypt::decryptData('0123456789abcdef', $json);
         $this->data = json_decode($json, true);
     }
 
