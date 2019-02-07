@@ -34,7 +34,7 @@ foreach (stations() as $station) {
 	(8.5282*(10**-4)*$F*($RH**2)) - 
 	(1.99*(10**-6)*($F**2)*($RH**2));
 	}	else{
-		continue;
+		//continue;
 	}
 	$HIC = ($HIF-32)/1.8;
 
