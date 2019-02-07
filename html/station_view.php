@@ -3,8 +3,9 @@ session_start();
 if(!isset($_SESSION['username']))	{
     header("location:src/form_login.php"); } ?>
 <?php
-    $station = station($_GET['station_id']);
-    $data    = $station->data(today());;
+    $station  = station($_GET['station_id']);
+    $data     = $station->data(today());
+    $weekData = stationDataLastWeek($station->getId());
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,15 +68,19 @@ if(!isset($_SESSION['username']))	{
                                 </li>
                                 <li class="list-group-item">
                                     <strong>Current temperature:</strong>
-                                    <?php echo round($data['TEMP'][count($data['TEMP']) -1], 2) ?>
+                                    <?php echo round($data['TEMP'][count($data['TEMP']) -1], 1) ?>
                                 </li>
                                 <li class="list-group-item">
                                     <strong>Average temperature (Today):</strong>
-                                    <?php echo round(array_sum($data['TEMP']) / count($data['TEMP']), 2) ?>
+                                    <?php echo round(array_sum($data['TEMP']) / count($data['TEMP']), 1) ?>
                                 </li>
                                 <li class="list-group-item">
-                                    <strong>Average temperature (Week):</strong>
-                                    TODO
+                                    <strong>Current rainfall (ML):</strong>
+                                    <?php echo round($data['PRCP'][count($data['PRCP']) -1], 1) ?>
+                                </li>
+                                <li class="list-group-item">
+                                    <strong>Average rainfall (ML) (Today):</strong>
+                                    <?php echo round(array_sum($data['PRCP']) / count($data['PRCP']), 1) ?>
                                 </li>
                                 <!--<li class="list-group-item">
                                     <strong>Average temperature (Month):</strong>
