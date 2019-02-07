@@ -141,9 +141,9 @@ usort($resortData, function($a, $b) {
                 <?php
                 for ($i=0; $i<4; $i++){
                     if ($setDate == $i) {
-                        echo "<option value=".$setDate." selected>".today(-$i*7)."_$i</option>";
+                        echo "<option value=".$setDate." selected>".today(-$i*7)."</option>";
                     } else {
-                        echo "<option value=".$i.">".today(-$i*7)."_$i</option>";
+                        echo "<option value=".$i.">".today(-$i*7)."</option>";
                     }
                 };
                 ?>
