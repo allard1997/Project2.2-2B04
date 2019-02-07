@@ -4,9 +4,6 @@ include_once 'DataHandler.php';
 include_once 'model/Station.php';
 
 date_default_timezone_set('Europe/Amsterdam');
-ini_set('display_startup_errors',1);
-ini_set('display_errors',1);
-error_reporting(-1);
 
 if (!function_exists('stations')) {
     function stations($countries = null): array
