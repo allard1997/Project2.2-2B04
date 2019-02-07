@@ -57,7 +57,7 @@ if(!isset($_SESSION['username']))	{
                 <div class="col-12 justify-content-center">
                     <div class="card">
                         <div class="card-header px-4">
-                            <h4 class="card-title">Station: <?php echo ucfirst(strtolower($station->getName())); ?></h4>
+                            <h4 class="card-title">Station: <?php echo ucfirst(strtolower($station->getName())) ; ?></h4>
                         </div>
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
