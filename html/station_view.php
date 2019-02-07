@@ -75,11 +75,11 @@ if(!isset($_SESSION['username']))	{
                                     <?php echo round(array_sum($data['TEMP']) / count($data['TEMP']), 1) ?>
                                 </li>
                                 <li class="list-group-item">
-                                    <strong>Current rainfall (ML):</strong>
+                                    <strong>Current rainfall (CM):</strong>
                                     <?php echo round($data['PRCP'][count($data['PRCP']) -1], 1) ?>
                                 </li>
                                 <li class="list-group-item">
-                                    <strong>Average rainfall (ML) (Today):</strong>
+                                    <strong>Average rainfall (CM) (Today):</strong>
                                     <?php echo round(array_sum($data['PRCP']) / count($data['PRCP']), 1) ?>
                                 </li>
                                 <!--<li class="list-group-item">
