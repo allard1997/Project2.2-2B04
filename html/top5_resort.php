@@ -2,7 +2,6 @@
 include 'src/model/Station.php';
 include 'src/helper.php';
 
-
 foreach (stations() as $station) {
     /** @var Station $station */
     $stationData = stationDataLastWeek($station->getId());
