@@ -39,11 +39,11 @@ foreach (stations() as $station) {
 	$HIC = ($HIF-32)/1.8;
 
     if ($maxTemp > 27.999999) {
-        continue;
+        //continue;
     }
 
     if ($maxRainfall > 1)	{
-        continue;
+        //continue;
     }
 	
 	//Put data in array
