@@ -31,7 +31,7 @@ include('src/header.php');
                 <div class="col-md-4">
                     <h2>Map</h2>
                     <p>A map with toggleable markers.</p>
-                    <a class="btn btn-secondary" href="pages/stationmaps.php" role="button">View map &raquo;</a>
+                    <a class="btn btn-secondary" href="map/stationmaps.php" role="button">View map &raquo;</a>
                 </div>
                 <div class="col-md-4">
                     <h2>Weather stations</h2>
